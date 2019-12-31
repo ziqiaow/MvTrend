@@ -19,7 +19,7 @@ devtools::install_github("ziqiaow/MvTrend")
 ### To get started with the package
 Load the package and open the package vignette:
 ```
-library(MvTrend)
+library("MvTrend")
 vignette("MvTrend")
 ```
 There will be examples for all the functions in MvTrend package. If you have any question, use help().
