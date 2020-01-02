@@ -5,14 +5,10 @@ Manuscript: https://www.tandfonline.com/doi/abs/10.1080/19466315.2019.1690037?jo
 
 
 ### Installation
-If you don't have devtools package installed, first install devtools package by running
+Install the MvTrend package via github
 ```
-install.packages("devtools")
-library("devtools")
-```
-
-After having devtools installed, install the MvTrend package via github
-```
+if(!requireNamespace("devtools", quietly = TRUE))
+    install.packages("devtools")
 devtools::install_github("ziqiaow/MvTrend") 
 ```
 
