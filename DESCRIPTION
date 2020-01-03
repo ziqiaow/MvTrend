@@ -4,8 +4,7 @@ Title: Testing for Trend in Benefit-Risk Analysis with Prioritized Multiple Outc
 Version: 0.1.0
 Author: Ziqiao Wang
 Maintainer: Ziqiao Wang <wzqjanet@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This is a R package testing for trend in benefit-risk analysis with prioritized multiple outcomes. This package can be implemented for testing for trend in multiple settings. For example, in clinical trials benefit-risk analysis, we are interested to test whether there is a significant trend between the effect on the patients for different doses of a new drug compared with the control. This package enables us to test for the trend of the effect by directly combining multiple outcomes simultanuously.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
