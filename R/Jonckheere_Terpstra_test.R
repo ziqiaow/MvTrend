@@ -61,8 +61,7 @@ JT_test=function(rank, #The rank output from DOOR.rank function, need to include
 
 
   #Permutation Jonckheere test
-  library(clinfun)
-  joncktest_perm = jonckheere.test(x=rank$DOOR.rank,g=rank$label,alternative = "increasing",nperm = rsam)
+  joncktest_perm = clinfun::jonckheere.test(x=rank$DOOR.rank,g=rank$label,alternative = "increasing",nperm = rsam)
   test_stat_jon_perm = joncktest_perm$statistic
   p_jon_perm = joncktest_perm$p.value
 

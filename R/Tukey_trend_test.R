@@ -11,7 +11,6 @@ Tukey_trend_test=function(rank, #The rank output from DOOR.rank function, need t
                           rsam = 1000, #Number of permutations to perform, default = 1000
                           alpha = 0.05 #Desired type I error level, defalt = 0.05
 ){
-  library(mvtnorm)
   n_sub = as.numeric(table(rank$Dose)) #Number of subjects for each group, ordered by group dose level from small to large
   n_group = length(n_sub) #Number of groups
 
