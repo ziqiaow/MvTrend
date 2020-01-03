@@ -89,7 +89,7 @@ Tukey_trend_test=function(rank, #The rank output from DOOR.rank function, need t
   p_asymp_arithlog = 1-pf(test_asymp_arithlog,1,df)
 
   #Final p-value for Tukey's test based on asymptotic formula
-  tukey_p_asymp=min(p_asymp_ordinal,p_asymp_arithmetic,p_asymp_arithlog)
+  p_tukey_asymp=min(p_asymp_ordinal,p_asymp_arithmetic,p_asymp_arithlog)
 
 
   #To adjust for tukey's trend test with the new alpha threshold at the desired type I error level, by default type I error level = 0.05
@@ -103,7 +103,7 @@ Tukey_trend_test=function(rank, #The rank output from DOOR.rank function, need t
 
 
 
-  results = list(tukey_perm_statistics = perm, p_tukey_perm = p_tukey_perm, tukey_asymp_statistics = c(test_asymp_ordinal = test_asymp_ordinal,test_asymp_arithmetic = test_asymp_arithmetic,test_asymp_arithlog = test_asymp_arithlog ),tukey_p_asymp = tukey_p_asymp, alpha_adjusted = alpha_adjusted)
+  results = list(tukey_perm_statistics = perm, p_tukey_perm = p_tukey_perm, tukey_asymp_statistics = c(test_asymp_ordinal = test_asymp_ordinal,test_asymp_arithmetic = test_asymp_arithmetic,test_asymp_arithlog = test_asymp_arithlog ),p_tukey_asymp = p_tukey_asymp, alpha_adjusted = alpha_adjusted)
   return(results)
 
 
