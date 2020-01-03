@@ -9,7 +9,7 @@ Install the MvTrend package via github
 ```
 if(!requireNamespace("devtools", quietly = TRUE))
     install.packages("devtools")
-devtools::install_github("ziqiaow/MvTrend") 
+devtools::install_github("ziqiaow/MvTrend",build_vignettes=TRUE) 
 ```
 
 ### To get started with the package
