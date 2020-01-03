@@ -16,7 +16,7 @@ cuzick.test=function(rank, #The rank output from DOOR.rank function, need to inc
                      correct.ties=TRUE, #Whether to correct ties when ties exist, default is TRUE
                      verbose = FALSE, #Print whether ties exist or not
                      perm = FALSE, #Whether to conduct permutation test, default is FALSE
-                     rsam = 10000 #Number of permutations
+                     rsam = 1000 #Number of permutations
 ){
   x=rank$DOOR.rank;g=rank$label
   alternative <- match.arg(alternative)

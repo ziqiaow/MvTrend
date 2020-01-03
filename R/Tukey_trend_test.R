@@ -98,7 +98,7 @@ Tukey_trend_test=function(rank, #The rank output from DOOR.rank function, need t
   cor23=cor(dose_level_arith,dose_level_arithlog)
   cormat1=matrix(c(1,cor12,cor13,cor12,1,cor23,cor13,cor23,1),3,3)
   #If desired type 1 error set to 0.05
-  t=as.numeric(qmvt(1-alpha,tail="both.tails",maxiter=1000,corr=cormat1,interval=c(0,1),df=df)[1])
+  t=as.numeric(mvtnorm::qmvt(1-alpha,tail="both.tails",maxiter=1000,corr=cormat1,interval=c(0,1),df=df)[1])
   alpha_adjusted=pt(t,df=df,lower.tail = FALSE)*2
 
 
