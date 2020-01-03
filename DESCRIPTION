@@ -12,4 +12,6 @@ Depends:
     R (>= 3.5)
 Imports:
     dplyr,clinfun,mvtnorm
+Suggests: knitr,rmarkdown
+VignetteBuilder: knitr
 RoxygenNote: 7.0.2.9000

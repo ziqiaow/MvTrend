@@ -1,0 +1,93 @@
+---
+title: "Introduction to MvTrend"
+author: "Ziqiao Wang"
+date: '`r Sys.Date()`'
+output:
+  html_document: default
+  rmarkdown::html_vignette: default
+vignette: >
+  %\VignetteIndexEntry{Introduction to MvTrend}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+ This is a R package testing for trend in benefit-risk analysis with prioritized multiple outcomes. This package can be implemented for testing for trend in multiple settings. For example, in clinical trials benefit-risk analysis, we are interested to test whether there is a significant trend between the effect on the patients for different doses of a new drug compared with the control. This package enables us to test for the trend of the effect by directly combining multiple outcomes simultanuously. 
+
+- Calculate the rank of each patient based on their clinical characteristics by including both benefit and risk outcomes based on the priority using DOOR algorithm
+- Test for trend using Jonckheere Terpstra test and permutation test
+- Test for trend using Tukey's trend test and permutation test
+- Test for trend using the nonparametric Cuzick's test and permutation test
+
+It is recommended to apply the Jonckheere Terpstra test permutation version for trend testing, although all three types of tests are available in this MvTrend package.
+
+
+```{r setup,include=F}
+library(MvTrend)
+```
+
+## Load the example data
+```{r}
+# Load the example data
+data("example_trend")
+head(example_trend)
+```
+
+- ID: Sample IDs
+- Dosage_level: control, low dosage, and high dosage groups
+- Severe: Whether the patient experience severe adverse effect, -1 yes, 0 no
+- Benefit: Whether the medicine works for the patient, 1 yes, 0 no
+- Moderate: Whether the patient experience moderate adverse effect, -1 yes, 0 no
+- Mild: Whether the patient experience mild adverse effect, -1 yes, 0 no
+- Mild: Whether the patient experience mild adverse effect, -1 yes, 0 no
+- Dose: Actual dosage for the medicine, the example is 0mg for control, 5mg for low dosage, 20mg for high dosage
+- label: The ordinal group of dosage levels for each individual, control is 1, low dosage is 2, high dosage is 3
+
+ Note that binary/categorical clinical outcomes should be coded as integers, the less wanted is assigned a smaller number. Here, for example, the severe outcome is -1 (yes) and 0 (no), it can also be coded as 1 (yes) and 2 (no).
+
+## Calculate the rank based on DOOR algorithm 
+```{r}
+# Calculate the rank
+rank.output <- DOOR.rank( example_trend, var_order = c("Severe","Benefit","Moderate","Mild") )
+head(rank.output)
+```
+
+ For the function DOOR.rank, var_order is the desired order for the importance of the clinical outcomes, here, "Severe" is more important than "Benefit", "Benefit" weights more than "Moderate", and "Mild" is the least important variable among the four. 
+ 
+ For the output of the function, DOOR.rank is the ranked output combining the four clinical outcomes using DOOR algorithm. The higher rank the more desired.  
+ 
+ 
+
+## Testing for trend using Jonckheere Terpstra Test
+```{r}
+#Jonckheere Terpstra Test
+JT.test.output <- JT_test(rank.output, rsam = 1000)
+objects(JT.test.output)
+JT.test.output$p_jon_perm #The p value for permutation test
+JT.test.output$p_jon_asymp #The p value for the nonparametric test based on asymptotic assumptions
+```
+
+
+
+## Testing for trend using Tukey's Trend Test
+```{r}
+tukey.test.output <- Tukey_trend_test(rank.output, rsam = 1000, alpha = 0.05) #alpha is the desired type I error level, defalt is 0.05
+objects(tukey.test.output)
+tukey.test.output$p_tukey_perm #The p value for permutation test
+tukey.test.output$p_tukey_asymp #The p value for the parametric test based on asymptotic assumptions
+tukey.test.output$alpha_adjusted #The adjusted alpha threshold to reject the test
+```
+
+ Reject the test when the p value is smaller than the adjusted alpha level from the function output value "alpha_adjusted".
+
+
+## Testing for trend using Cuzick's Test
+```{r}
+cuzick.test.output <- cuzick.test(rank.output, alternative = "greater", perm = TRUE)
+objects(cuzick.test.output)
+cuzick.test.output$perm.p.value #The p value for permutation test
+cuzick.test.output$p.value #The p value for the nonparametric test based on asymptotic assumptions
+
+```
+
+
+For the example dataset, we reach the same conclusion from all the three different tests that there is evidence to reject the null hypothesis that there is no difference between the effect of the three dosage levels for the target agent.
