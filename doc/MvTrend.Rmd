@@ -11,7 +11,7 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
- This is a R package testing for trend in benefit-risk analysis with prioritized multiple outcomes. This package can be implemented for testing for trend in multiple settings. For example, in clinical trials benefit-risk analysis, we are interested to test whether there is a significant trend between the effect on the patients for different doses of a new drug compared with the control. This package enables us to test for the trend of the effect by directly combining multiple outcomes simultanuously. 
+ This is an R package testing for trend in benefit-risk analysis with prioritized multiple outcomes. This package can be implemented for testing for trend in multiple settings. For example, in clinical trials benefit-risk analysis, we are interested to test whether there is a significant trend between the effect on the patients for different doses of a new drug compared with the control. This package enables us to test for the trend of the effect by directly combining multiple outcomes simultanuously. 
 
 - Calculate the rank of each patient based on their clinical characteristics by including both benefit and risk outcomes based on the priority using DOOR algorithm
 - Test for trend using Jonckheere Terpstra test and permutation test

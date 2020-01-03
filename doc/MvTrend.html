@@ -11,7 +11,7 @@
 
 <meta name="author" content="Ziqiao Wang" />
 
-<meta name="date" content="2020-01-02" />
+<meta name="date" content="2020-01-03" />
 
 <title>Introduction to MvTrend</title>
 
@@ -180,12 +180,12 @@ summary {
 
 <h1 class="title toc-ignore">Introduction to MvTrend</h1>
 <h4 class="author">Ziqiao Wang</h4>
-<h4 class="date">2020-01-02</h4>
+<h4 class="date">2020-01-03</h4>
 
 </div>
 
 
-<p>This is a R package testing for trend in benefit-risk analysis with prioritized multiple outcomes. This package can be implemented for testing for trend in multiple settings. For example, in clinical trials benefit-risk analysis, we are interested to test whether there is a significant trend between the effect on the patients for different doses of a new drug compared with the control. This package enables us to test for the trend of the effect by directly combining multiple outcomes simultanuously.</p>
+<p>This is an R package testing for trend in benefit-risk analysis with prioritized multiple outcomes. This package can be implemented for testing for trend in multiple settings. For example, in clinical trials benefit-risk analysis, we are interested to test whether there is a significant trend between the effect on the patients for different doses of a new drug compared with the control. This package enables us to test for the trend of the effect by directly combining multiple outcomes simultanuously.</p>
 <ul>
 <li>Calculate the rank of each patient based on their clinical characteristics by including both benefit and risk outcomes based on the priority using DOOR algorithm</li>
 <li>Test for trend using Jonckheere Terpstra test and permutation test</li>
@@ -242,7 +242,7 @@ objects(JT.test.output)</code></pre>
 ## [4] &quot;p_jon_asymp&quot;         &quot;p_jon_perm&quot;          &quot;test_stat_jon_asymp&quot;
 ## [7] &quot;variance_jon_asymp&quot;</code></pre>
 <pre class="r"><code>JT.test.output$p_jon_perm #The p value for permutation test</code></pre>
-<pre><code>## [1] 0.012</code></pre>
+<pre><code>## [1] 0.021</code></pre>
 <pre class="r"><code>JT.test.output$p_jon_asymp #The p value for the nonparametric test based on asymptotic assumptions</code></pre>
 <pre><code>## [1] 0.01113698</code></pre>
 </div>
@@ -257,7 +257,7 @@ objects(tukey.test.output)</code></pre>
 <pre class="r"><code>tukey.test.output$p_tukey_asymp #The p value for the parametric test based on asymptotic assumptions</code></pre>
 <pre><code>## [1] 0.0221055</code></pre>
 <pre class="r"><code>tukey.test.output$alpha_adjusted #The adjusted alpha threshold to reject the test</code></pre>
-<pre><code>## [1] 0.03978499</code></pre>
+<pre><code>## [1] 0.03951883</code></pre>
 <p>Reject the test when the p value is smaller than the adjusted alpha level from the function output value “alpha_adjusted”.</p>
 </div>
 <div id="testing-for-trend-using-cuzicks-test" class="section level2">
@@ -267,7 +267,7 @@ objects(cuzick.test.output)</code></pre>
 <pre><code>## [1] &quot;estimates&quot;      &quot;estimates.perm&quot; &quot;p.value&quot;        &quot;perm.p.value&quot;  
 ## [5] &quot;test.type&quot;      &quot;variance&quot;       &quot;z&quot;</code></pre>
 <pre class="r"><code>cuzick.test.output$perm.p.value #The p value for permutation test</code></pre>
-<pre><code>## [1] 0.01298701</code></pre>
+<pre><code>## [1] 0.01198801</code></pre>
 <pre class="r"><code>cuzick.test.output$p.value #The p value for the nonparametric test based on asymptotic assumptions</code></pre>
 <pre><code>## [1] 0.01187362</code></pre>
 <p>For the example dataset, we reach the same conclusion from all the three different tests that there is evidence to reject the null hypothesis that there is no difference between the effect of the three dosage levels for the target agent.</p>
